@@ -42,6 +42,14 @@ let database = [
     {
         username: "iKsmith",
         password: "Abc123"
+    },
+    {
+        username: "MajgenShep",
+        password: "yoyo"
+    },
+    {
+        username: "Keezy2Breezy",
+        password: "KEYS"
     }
 ];
 
@@ -51,25 +59,38 @@ const newsFeed = [
         timeline: "Hello World"
     },
     {
-        username: "iKsmith",
-        timeline: "Hello World"
+        username: "MajgenShep",
+        timeline: "You On?"
     },
     {
-        username: "iKsmith",
-        timeline: "Hello World"
+        username: "Keezy2Breezy",
+        timeline: "Oh, Twoo KaAyYy!?!?"
     }
 ];
 
 let userNamePrompt = prompt("What's your username?");
 let passwordPrompt = prompt("What's your password?");
 
-function signIn(user, pass) {
-    if (user === database[0].username && 
-        pass === database[0].password) {
-            console.log(newsFeed);
+function isUserValid(username, password) {
+    for (let i=0; i < database.length; i++) {
+        if (database[i].username === username &&
+            database[i].password === password) {
+                return true;
+            } 
+             
+        }
+        return false;
+    }
+
+
+function signIn(username, password) {
+    console.log(isUserValid(username, password));
+
+    if (isUserValid(username, password)) {
+        console.log(newsFeed);
         } else {
             alert("Sorry, wrong username or password!");
         }
-    }
+     }
 
 signIn(userNamePrompt, passwordPrompt);
